@@ -110,7 +110,7 @@ public class PlayerWAILA extends BukkitRunnable {
                 case GENERATOR:
                 case CONSUMER:
                     if (enc.getCapacity() <= 0) break;
-                    name.append(" §7| ").append(enc.getCharge(target)).append("J Stored");
+                    name.append(" §7| ").append(enc.getCharge(target)).append("J 已储存");
                     break;
             
                 default:
@@ -138,7 +138,7 @@ public class PlayerWAILA extends BukkitRunnable {
                     con.setAccessible(true);
                     ter.setAccessible(true);
 
-                    name.append(" §7| Network Size: ").append(
+                    name.append(" §7| 能源网络大小: ").append(
                         ((Set<?>) con.get(en)).size() +
                         ((Set<?>) ter.get(en)).size() + 1
                     );
