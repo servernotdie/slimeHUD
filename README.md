@@ -1,26 +1,32 @@
 # SlimeHUD
 
-Adds a WAILA (What Am I Looking At) HUD for Slimefun items. Lets you see what Slimefun item a block is without breaking or opening its menu. Can be set to display in the bossbar or above the hotbar in `config.yml`. Additional energy/cargo information can also be toggled on or off in `config.yml`. Individual players can also toggle their WAILA HUD with `/slimehud toggle`.
+添加了 Slimefun 方块的 WAILA (我在看什么) 显示功能。  
+你可以直接获得你看向的方块的名称，不需要打开菜单，或是破坏方块。  
 
-## Preview
+可以在`config.yml`中设置使用BossBar或ActionBar显示。  
+额外的能源/货运网络信息也可以设置开启或关闭。
 
-### Bossbar version
+玩家可以使用指令 `/slimehud toggle` 来切换 WAILA 的开关。
+
+## 预览
+
+### BossBar 版本
 
 <https://user-images.githubusercontent.com/101147426/180625208-4713a843-e856-475e-ba83-95b5a61786f8.mp4>
 
-### Hotbar version
+### ActionBar 版本
 
 https://user-images.githubusercontent.com/101147426/180625211-cbcfd01d-d418-4e6c-a8ab-55d938d7840e.mp4
 
-## Limitations
+## 限制
 
-- Minecraft only has 7 colors for the bossbar, compared to 16 for regular items.
-- Does not work with hex color codes (defaults to white).
+- Minecraft 仅有7种颜色的BossBar，而聊天文字颜色却有16种。
+- 不支持16进制RGB颜色 (默认为白色)。
 
-## Requirements
+## 需要
 
-- Spigot or its derivatives
-- Slimefun, of course
+- Spigot 或衍生服务端
+- Slimefun
 
 ## Credits
 

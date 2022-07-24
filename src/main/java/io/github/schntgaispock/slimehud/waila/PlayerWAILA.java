@@ -88,7 +88,7 @@ public class PlayerWAILA extends BukkitRunnable {
                     con.setAccessible(true);
                     ter.setAccessible(true);
 
-                    name.append(" §7| Network Size: ").append(
+                    name.append(" §7| 网络大小: ").append(
                         ((Set<?>) con.get(en)).size() +
                         ((Set<?>) ter.get(en)).size() + 1
                     );
@@ -122,7 +122,7 @@ public class PlayerWAILA extends BukkitRunnable {
         ) {
             CargoNode cn = (CargoNode) item;
             int channel = cn.getSelectedChannel(targetBlock) + 1;
-            name.append(" §7| Channel: ").append(Util.getColorFromCargoChannel(channel).toString()).append(channel);
+            name.append(" §7| 信道: ").append(Util.getColorFromCargoChannel(channel).toString()).append(channel);
         } else if ( // Is a Cargo Connector Node or Cargo Manager
             (item instanceof CargoConnectorNode ||
             item instanceof CargoManager) &&
