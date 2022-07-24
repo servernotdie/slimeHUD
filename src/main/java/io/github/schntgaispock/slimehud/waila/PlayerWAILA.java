@@ -88,7 +88,7 @@ public class PlayerWAILA extends BukkitRunnable {
                     con.setAccessible(true);
                     ter.setAccessible(true);
 
-                    name.append(" §7| 网络大小: ").append(
+                    name.append(" §7| 能源网络大小: ").append(
                         ((Set<?>) con.get(en)).size() +
                         ((Set<?>) ter.get(en)).size() + 1
                     );
@@ -138,7 +138,7 @@ public class PlayerWAILA extends BukkitRunnable {
                     con.setAccessible(true);
                     ter.setAccessible(true);
 
-                    name.append(" §7| 能源网络大小: ").append(
+                    name.append(" §7| 货运网络大小: ").append(
                         ((Set<?>) con.get(en)).size() +
                         ((Set<?>) ter.get(en)).size() + 1
                     );
