@@ -58,7 +58,7 @@ public class Util {
                 return BarColor.WHITE;
         
             default:
-                SlimeHUD.log(Level.WARNING, "[WAILA HUD] Invalid bossbar color: " + color, "[WAILA HUD] Setting color to white...");
+                SlimeHUD.log(Level.WARNING, "[WAILA HUD] 无效的 BossBar 颜色: " + color, "[WAILA HUD] 将使用默认的白色...");
                 return BarColor.WHITE;
         }
     }

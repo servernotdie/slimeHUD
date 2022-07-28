@@ -56,7 +56,7 @@ public class HudController {
                 int terSize = ((Set<?>) ter.get(en)).size();
                 con.setAccessible(false);
                 ter.setAccessible(false);
-                return "§7| Network Size: " + (conSize + terSize + 1);
+                return "§7| 能源网络大小: " + (conSize + terSize + 1);
             } catch (NoSuchFieldException | IllegalAccessException e) {
                 e.printStackTrace();
             }
@@ -76,7 +76,7 @@ public class HudController {
             case GENERATOR:
             case CONSUMER:
                 if (enc.getCapacity() > 0) {
-                    return "§7| " + enc.getCharge(request.getLocation()) + "J Stored";
+                    return "§7| " + enc.getCharge(request.getLocation()) + "J 已存储";
                 }
                 break;
             default:
@@ -92,7 +92,7 @@ public class HudController {
         }
         CargoNode cn = (CargoNode) request.getSlimefunItem();
         int channel = cn.getSelectedChannel(request.getLocation().getBlock()) + 1;
-        return "§7| Channel: " + Util.getColorFromCargoChannel(channel).toString() + channel;
+        return "§7| 信道: " + Util.getColorFromCargoChannel(channel).toString() + channel;
     }
 
     @Nonnull
@@ -115,7 +115,7 @@ public class HudController {
 
                 con.setAccessible(false);
                 ter.setAccessible(false);
-                return "§7| Network Size: " + (conSize + terSize + 1);
+                return "§7| 货运网络大小: " + (conSize + terSize + 1);
             } catch (NoSuchFieldException | IllegalAccessException e) {
                 e.printStackTrace();
             }
