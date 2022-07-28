@@ -3,6 +3,7 @@ package io.github.schntgaispock.slimehud;
 
 import javax.annotation.Nonnull;
 
+import io.github.schntgaispock.slimehud.waila.HudController;
 import net.guizhanss.guizhanlibplugin.updater.GuizhanBuildsUpdaterWrapper;
 import org.bstats.bukkit.Metrics;
 import org.bstats.charts.SimplePie;
@@ -18,6 +19,8 @@ public class SlimeHUD extends AbstractAddon {
 
     @Getter AddonConfig playerData;
     static SlimeHUD instance;
+
+    private HudController hudController;
 
     public SlimeHUD() {
         super("SchnTgaiSpock", "SlimeHUD", "master", "options.auto-update");
@@ -52,6 +55,7 @@ public class SlimeHUD extends AbstractAddon {
 
         WAILAManager.setup();
         CommandManager.setup();
+        hudController = new HudController();
 
         if (getConfig().getBoolean("options.auto-update") && getDescription().getVersion().startsWith("Build")) {
             GuizhanBuildsUpdaterWrapper.start(this, getFile(), "SlimefunGuguProject", "SlimeHUD", "master", false);
@@ -63,6 +67,10 @@ public class SlimeHUD extends AbstractAddon {
         instance = null;
         getPlayerData().save();
         getConfig().save();
+    }
+
+    public static HudController getHudController() {
+        return instance.hudController;
     }
 
     public static NamespacedKey newNamespacedKey(@Nonnull String name) {
