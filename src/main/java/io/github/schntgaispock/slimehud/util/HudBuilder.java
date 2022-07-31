@@ -19,7 +19,7 @@ public class HudBuilder {
      * @return The formatted text
      */
     public static String formatEnergyStored(int energy) {
-        return "&7| " + HudBuilder.getAbbreviatedNumber(energy) + " J Stored";
+        return "&7| " + HudBuilder.getAbbreviatedNumber(energy) + " J 已存储";
     }
 
     /**
@@ -29,7 +29,7 @@ public class HudBuilder {
      * @return The formatted text
      */
     public static String formatEnergyGenerated(int energy) {
-        return "&7| Generating " + HudBuilder.getAbbreviatedNumber(energy) + " J/t";
+        return "&7| 正在发电 " + HudBuilder.getAbbreviatedNumber(energy) + " J/t";
     }
 
     /**
