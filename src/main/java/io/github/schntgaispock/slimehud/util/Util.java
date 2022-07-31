@@ -6,31 +6,27 @@ import org.bukkit.ChatColor;
 import org.bukkit.boss.BarColor;
 
 import io.github.schntgaispock.slimehud.SlimeHUD;
+import lombok.experimental.UtilityClass;
 
+@UtilityClass
 public class Util {
     
     public static BarColor pickBarColorFromName(String name) {
         char colorCode = name.trim().toLowerCase().startsWith("§") ? name.charAt(1) : ' ';
         switch (colorCode) {
-            case '4':
-            case 'c':
+            case '4', 'c':
                 return BarColor.RED;
             
-            case '6':
-            case 'e':
+            case '6', 'e':
                 return BarColor.YELLOW;
 
-            case '2':
-            case 'a':
+            case '2', 'a':
                 return BarColor.GREEN;
 
-            case '3':
-            case 'b':
+            case '3', 'b':
                 return BarColor.BLUE;
 
-            case '1':
-            case '5':
-            case '9':
+            case '1', '5', '9':
                 return BarColor.PURPLE;
         
             case 'd':
@@ -44,17 +40,10 @@ public class Util {
 
     public static BarColor pickBarColorFromColor(String color) {
         switch (color.trim()) {
-            case "red":
-            case "yellow":
-            case "green":
-            case "blue":
-            case "purple":
-            case "pink":
-            case "white":
+            case "red", "yellow", "green", "blue", "purple", "pink", "white":
                 return BarColor.valueOf(color.toUpperCase());
 
-            case "default":
-            case "inherit":
+            case "default", "inherit":
                 return BarColor.WHITE;
         
             default:
@@ -102,6 +91,5 @@ public class Util {
                 return ChatColor.WHITE;
         }
     }
-
 
 }
