@@ -34,7 +34,6 @@ https://user-images.githubusercontent.com/101147426/180625211-cbcfd01d-d418-4e6c
 ## 限制
 
 - Minecraft 仅有7种颜色的BossBar，而聊天文字颜色却有16种。
-- 不支持16进制RGB颜色 (默认为白色)。
 
 ## 需要
 
@@ -43,5 +42,5 @@ https://user-images.githubusercontent.com/101147426/180625211-cbcfd01d-d418-4e6c
 
 ## Credits
 
-*InfinityLib* by Mooy1\
+*InfinityLib* by Mooy1
 *Lombok* by Project Lombok
