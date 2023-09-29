@@ -1,11 +1,10 @@
 package io.github.schntgaispock.slimehud;
 
-
 import javax.annotation.Nonnull;
 
 import io.github.schntgaispock.slimehud.placeholder.PlaceholderManager;
 import io.github.schntgaispock.slimehud.waila.HudController;
-import net.guizhanss.guizhanlibplugin.updater.GuizhanBuildsUpdaterWrapper;
+import net.guizhanss.guizhanlibplugin.updater.GuizhanUpdater;
 import org.bstats.bukkit.Metrics;
 import org.bstats.charts.SimplePie;
 import org.bukkit.NamespacedKey;
@@ -23,7 +22,7 @@ public class SlimeHUD extends AbstractAddon {
     private HudController hudController;
 
     public SlimeHUD() {
-        super("SchnTgaiSpock", "SlimeHUD", "master", "options.auto-update");
+        super("SlimefunGuguProject", "SlimeHUD", "master", "options.auto-update");
     }
 
     @Override
@@ -54,7 +53,7 @@ public class SlimeHUD extends AbstractAddon {
         hudController = new HudController();
 
         if (getConfig().getBoolean("options.auto-update") && getDescription().getVersion().startsWith("Build")) {
-            GuizhanBuildsUpdaterWrapper.start(this, getFile(), "SlimefunGuguProject", "SlimeHUD", "master", false);
+            GuizhanUpdater.start(this, getFile(), "SlimefunGuguProject", "SlimeHUD", "master");
         }
     }
 
