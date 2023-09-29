@@ -2,6 +2,9 @@ options:
   # 自动更新 （你应该开启）
   auto-update: true
 
+  # 是否启用 PlaceholderAPI 的支持（可获取玩家的HUD启用状态）
+  placeholder-api-support: true
+
 waila:
 
   # 设置为 true 时，禁用一切功能。

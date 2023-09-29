@@ -3,6 +3,7 @@ package io.github.schntgaispock.slimehud;
 
 import javax.annotation.Nonnull;
 
+import io.github.schntgaispock.slimehud.placeholder.PlaceholderManager;
 import io.github.schntgaispock.slimehud.waila.HudController;
 import net.guizhanss.guizhanlibplugin.updater.GuizhanBuildsUpdaterWrapper;
 import org.bstats.bukkit.Metrics;
@@ -49,6 +50,7 @@ public class SlimeHUD extends AbstractAddon {
 
         WAILAManager.setup();
         CommandManager.setup();
+        PlaceholderManager.setup();
         hudController = new HudController();
 
         if (getConfig().getBoolean("options.auto-update") && getDescription().getVersion().startsWith("Build")) {

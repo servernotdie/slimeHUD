@@ -16,6 +16,9 @@ depend:
 - Slimefun
 - GuizhanLibPlugin
 
+softdepend:
+- PlaceholderAPI
+
 commands:
   slimehud:
     description: /slimehud
