@@ -10,12 +10,7 @@
 
 ## 下载
 
-点击这里下载 SlimeHUD: [下载 SlimeHUD](https://builds.guizhanss.net/SlimefunGuguProject/SlimeHUD/master)
-
 <p align="center">
-  <a href="https://github.com/SlimefunGuguProject/SlimeHUD/actions/workflows/maven.yml">
-    <img src="https://github.com/SlimefunGuguProject/SlimeHUD/actions/workflows/maven.yml/badge.svg" alt="Java CI"/>
-  </a>
   <a href="https://builds.guizhanss.net/SlimefunGuguProject/SlimeHUD/master">
     <img src="https://builds.guizhanss.net/f/SlimefunGuguProject/SlimeHUD/master/badge.svg" alt="Build status"/>
   </a>
