@@ -18,6 +18,7 @@ depend:
 
 softdepend:
 - PlaceholderAPI
+- SlimefunTranslation
 
 commands:
   slimehud:

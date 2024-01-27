@@ -5,6 +5,9 @@ options:
   # 是否启用 PlaceholderAPI 的支持（可获取玩家的HUD启用状态）
   placeholder-api-support: true
 
+  # Use SlimefunTranslation to display the translated name of items
+  slimefun-translation-support: true
+
 waila:
 
   # 设置为 true 时，禁用一切功能。
