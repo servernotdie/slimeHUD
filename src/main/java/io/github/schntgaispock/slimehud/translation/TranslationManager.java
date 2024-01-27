@@ -17,7 +17,7 @@ public class TranslationManager {
             if (Bukkit.getPluginManager().getPlugin("SlimefunTranslation") != null) {
                 translationEnabled = true;
             } else {
-                SlimeHUD.getInstance().getLogger().info("SlimefunTranslation is not installed and has been ignored.");
+                SlimeHUD.getInstance().getLogger().info("SlimefunTranslation 未安装，相关功能将不会启用。");
                 translationEnabled = false;
             }
         }
@@ -35,7 +35,7 @@ public class TranslationManager {
                     SlimefunTranslation.getUserService().getUser(p),
                     sfItem);
         } catch (NoClassDefFoundError e) {
-            SlimeHUD.getInstance().getLogger().info("Could not get item translation! Please update SlimefunTranslation");
+            SlimeHUD.getInstance().getLogger().info("无法获取物品翻译，请更新 SlimefunTranslation!");
             translationEnabled = false;
             return sfItem.getItemName();
         }
