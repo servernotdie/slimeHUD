@@ -28,12 +28,14 @@ https://user-images.githubusercontent.com/101147426/180625211-cbcfd01d-d418-4e6c
 
 ## PlaceholderAPI
 
-- `%slimehud_toggle%`  
-  返回玩家是否已启用 SlimeHUD。`true` 或 `false`。
+- `%slimehud_toggle%` 返回玩家是否已启用 SlimeHUD。`true` 或 `false`。
+- `%slimehud_hud%` 返回完整的的 HUD 显示文本，包含方块名称与额外信息
+- `%slimehud_hud_block%` 仅包含方块名称
+- `%slimehud_hud_block_info%` 仅包含额外信息
 
 ## 限制
 
-- Minecraft 仅有7种颜色的BossBar，而聊天文字颜色却有16种。
+- Minecraft 仅有7种颜色的 BossBar，而聊天文字颜色却有16种。
 
 ## 需要
 
