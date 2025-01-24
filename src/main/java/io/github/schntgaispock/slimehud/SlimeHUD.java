@@ -2,6 +2,7 @@ package io.github.schntgaispock.slimehud;
 
 import javax.annotation.Nonnull;
 
+import com.tcoded.folialib.FoliaLib;
 import io.github.schntgaispock.slimehud.placeholder.PlaceholderManager;
 import io.github.schntgaispock.slimehud.translation.TranslationManager;
 import io.github.schntgaispock.slimehud.waila.HudController;
@@ -22,6 +23,7 @@ public class SlimeHUD extends AbstractAddon {
     static @Getter SlimeHUD instance;
     private HudController hudController;
     private TranslationManager translationManager;
+    private static FoliaLib foliaLib;
 
     public SlimeHUD() {
         super("SlimefunGuguProject", "SlimeHUD", "master", "options.auto-update");
@@ -30,6 +32,7 @@ public class SlimeHUD extends AbstractAddon {
     @Override
     public void enable() {
         instance = this;
+        foliaLib = new FoliaLib(this);
 
         getLogger().info("#=================================#");
         getLogger().info("#    SlimeHUD by SchnTgaiSpock    #");
@@ -76,5 +79,9 @@ public class SlimeHUD extends AbstractAddon {
 
     public static NamespacedKey newNamespacedKey(@Nonnull String name) {
         return new NamespacedKey(SlimeHUD.getInstance(), name);
+    }
+
+    public static FoliaLib getFoliaLib() {
+        return foliaLib;
     }
 }

@@ -7,6 +7,7 @@ import java.util.UUID;
 
 import javax.annotation.Nonnull;
 
+import com.tcoded.folialib.wrapper.task.WrappedTask;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -25,6 +26,7 @@ public class WAILAManager implements Listener {
 
     private static WAILAManager instance;
     private @Getter Map<UUID, PlayerWAILA> wailas = new HashMap<>();
+    private  WrappedTask wailaTask;
 
     private WAILAManager() {
     }
@@ -39,10 +41,15 @@ public class WAILAManager implements Listener {
         PlayerWAILA waila;
         if (!wailas.containsKey(player.getUniqueId())) {
             waila = new PlayerWAILA(player);
-            waila.runTaskTimer(
-                    SlimeHUD.getInstance(),
-                    0l,
-                    SlimeHUD.getInstance().getConfig().getLong("waila.tick-rate"));
+            SlimeHUD.getFoliaLib().getScheduler().runAtLocationTimer(
+                    player.getLocation(),
+                    wrappedTask -> waila.run(),
+                    0l,SlimeHUD.getInstance().getConfig().getLong("waila.tick-rate")
+            );
+//            waila.runTaskTimer(
+//                    SlimeHUD.getInstance(),
+//                    0l,
+//                    SlimeHUD.getInstance().getConfig().getLong("waila.tick-rate"));
             wailas.put(player.getUniqueId(), waila);
         } else {
             waila = wailas.get(player.getUniqueId());
@@ -60,7 +67,7 @@ public class WAILAManager implements Listener {
     private void removeWAILA(Player player) {
         PlayerWAILA waila = wailas.remove(player.getUniqueId());
         if (waila != null)
-            waila.cancel();
+            SlimeHUD.getFoliaLib().getScheduler().cancelTask(wailaTask);
     }
 
     @EventHandler

@@ -10,6 +10,8 @@ website: https://github.com/SchnTgaiSpock/SlimeHUD
 
 version: ${project.version}
 
+folia-supported: true
+
 api-version: 1.14
 
 depend:

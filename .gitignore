@@ -9,3 +9,6 @@ dependency-reduced-pom.xml
 .DS_Store
 /.vscode/
 eclipse-formatter.xml
+
+# no prebuilt lib jar
+lib/*.jar

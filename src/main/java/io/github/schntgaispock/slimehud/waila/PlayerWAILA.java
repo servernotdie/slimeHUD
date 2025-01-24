@@ -9,7 +9,6 @@ import org.bukkit.block.Block;
 import org.bukkit.boss.BarStyle;
 import org.bukkit.boss.BossBar;
 import org.bukkit.entity.Player;
-import org.bukkit.scheduler.BukkitRunnable;
 
 import io.github.schntgaispock.slimehud.SlimeHUD;
 import io.github.schntgaispock.slimehud.util.Util;
@@ -19,7 +18,7 @@ import me.mrCookieSlime.Slimefun.api.BlockStorage;
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.TextComponent;
 
-public class PlayerWAILA extends BukkitRunnable {
+public class PlayerWAILA implements Runnable {
 
     final private @Nonnull
     @Getter Player player;

@@ -16,6 +16,15 @@
   </a>
 </p>
 
+## 编译
+```
+mvn install:install-file -Dfile=lib/slimefun.jar -DgroupId=top.craft233 -DartifactId=Slimefun4 -Dversion=b39097e015 -Dpackaging=jar
+mvn install:install-file -Dfile=lib/InfinityLib.jar -DgroupId=top.craft233 -DartifactId=InfinityLib -Dversion=1.3.9 -Dpackaging=jar
+mvn install:install-file -Dfile=lib/guizhanlibplugin.jar -DgroupId=top.craft233 -DartifactId=GuizhanLibPlugin -Dversion=1.7.6 -Dpackaging=jar
+
+mvn clean package
+```
+
 ## 预览
 
 ### BossBar 版本
