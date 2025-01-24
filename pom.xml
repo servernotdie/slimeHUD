@@ -76,6 +76,10 @@
                             <pattern>org.bstats</pattern>
                             <shadedPattern>io.github.schntgaispock.bstats</shadedPattern>
                         </relocation>
+                        <relocation>
+                            <pattern>com.tcoded.folialib</pattern>
+                            <shadedPattern>io.github.schntgaispock.folialib</shadedPattern>
+                        </relocation>
                     </relocations>
                     <filters>
                         <filter>
