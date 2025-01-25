@@ -44,12 +44,8 @@ public class WAILAManager implements Listener {
             SlimeHUD.getFoliaLib().getScheduler().runAtLocationTimer(
                     player.getLocation(),
                     wrappedTask -> waila.run(),
-                    0l,SlimeHUD.getInstance().getConfig().getLong("waila.tick-rate")
+                    1l,SlimeHUD.getInstance().getConfig().getLong("waila.tick-rate")
             );
-//            waila.runTaskTimer(
-//                    SlimeHUD.getInstance(),
-//                    0l,
-//                    SlimeHUD.getInstance().getConfig().getLong("waila.tick-rate"));
             wailas.put(player.getUniqueId(), waila);
         } else {
             waila = wailas.get(player.getUniqueId());
@@ -67,7 +63,7 @@ public class WAILAManager implements Listener {
     private void removeWAILA(Player player) {
         PlayerWAILA waila = wailas.remove(player.getUniqueId());
         if (waila != null)
-            SlimeHUD.getFoliaLib().getScheduler().cancelTask(wailaTask);
+            SlimeHUD.getFoliaLib().getScheduler().cancelAllTasks();
     }
 
     @EventHandler

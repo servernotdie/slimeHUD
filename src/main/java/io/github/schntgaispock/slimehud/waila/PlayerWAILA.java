@@ -2,6 +2,7 @@ package io.github.schntgaispock.slimehud.waila;
 
 import javax.annotation.Nonnull;
 
+import com.tcoded.folialib.wrapper.task.WrappedTask;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -18,7 +19,7 @@ import me.mrCookieSlime.Slimefun.api.BlockStorage;
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.TextComponent;
 
-public class PlayerWAILA implements Runnable {
+public class PlayerWAILA implements Runnable{
 
     final private @Nonnull
     @Getter Player player;
@@ -37,6 +38,8 @@ public class PlayerWAILA implements Runnable {
     @Getter
     private String facingBlockInfo = "";
     private String previousFacing = "";
+
+    private Runnable r;
 
     private @Getter boolean paused;
 
@@ -57,6 +60,7 @@ public class PlayerWAILA implements Runnable {
     /**
      * Called every <code>waila.tick-rate</code> ticks
      */
+
     @Override
     public void run() {
         updateFacing();
