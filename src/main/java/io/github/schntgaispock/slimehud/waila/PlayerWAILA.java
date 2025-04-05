@@ -102,23 +102,26 @@ public class PlayerWAILA implements Runnable{
     }
 
     private void updateFacing() {
-        Block targetBlock = player.getTargetBlockExact(5);
-        if (targetBlock == null) {
-            clearFacing();
-            return;
-        }
+        SlimeHUD.getFoliaLib().getScheduler().runAtLocation(player.getLocation(),
+                wrappedTask -> {
+                    Block targetBlock = player.getTargetBlockExact(5);
+                    if (targetBlock == null) {
+                        clearFacing();
+                        return;
+                    }
 
-        SlimefunItem item = BlockStorage.check(targetBlock);
-        if (item == null) {
-            clearFacing();
-            return;
-        }
+                    SlimefunItem item = BlockStorage.check(targetBlock);
+                    if (item == null) {
+                        clearFacing();
+                        return;
+                    }
 
-        Location target = targetBlock.getLocation();
-        HudRequest request = new HudRequest(item, target, player);
-        facingBlock = SlimeHUD.getTranslationManager().getItemName(player, item);
-        facingBlockInfo = SlimeHUD.getHudController().processRequest(request);
-        facing = ChatColor.translateAlternateColorCodes('&', facingBlock + (facingBlockInfo.isEmpty() ? "" : " &7| " + facingBlockInfo));
+                    Location target = targetBlock.getLocation();
+                    HudRequest request = new HudRequest(item, target, player);
+                    facingBlock = SlimeHUD.getTranslationManager().getItemName(player, item);
+                    facingBlockInfo = SlimeHUD.getHudController().processRequest(request);
+                    facing = ChatColor.translateAlternateColorCodes('&', facingBlock + (facingBlockInfo.isEmpty() ? "" : " &7| " + facingBlockInfo));
+                });
     }
 
     private void clearFacing() {
