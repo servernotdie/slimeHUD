@@ -24,6 +24,13 @@ jobs:
           java-version: 17
           cache: 'maven'
 
+      - name: Cache Maven packages
+        uses: actions/cache@v3
+        with:
+          path: ~/.m2
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-m2
+
       - name: Download Slimefun from artifact
         uses: dawidd6/action-download-artifact@v9
         with:
