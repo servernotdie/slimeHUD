@@ -102,7 +102,7 @@ public class PlayerWAILA implements Runnable{
     }
 
     private void updateFacing() {
-        SlimeHUD.getFoliaLib().getScheduler().runAtLocation(player.getLocation(),
+        SlimeHUD.getFoliaLib().getScheduler().runAtEntity(player,
                 wrappedTask -> {
                     Block targetBlock = player.getTargetBlockExact(5);
                     if (targetBlock == null) {
