@@ -1,14 +1,14 @@
 # SlimeHUD
 
-添加了 Slimefun 方块的 WAILA (我在看什么) 显示功能。  
-你可以直接获得你看向的方块的名称，不需要打开菜单，或是破坏方块。  
+Đã thêm tính năng hiển thị WAILA (What Am I Looking At) cho các khối Slimefun.  
+Bạn có thể trực tiếp nhìn thấy tên của khối mà bạn đang nhìn vào, không cần mở menu hay phá khối.  
 
-可以在`config.yml`中设置使用BossBar或ActionBar显示。  
-额外的能源/货运网络信息也可以设置开启或关闭。
+Có thể thiết lập trong `config.yml` để hiển thị bằng BossBar hoặc ActionBar.  
+Thông tin bổ sung về mạng năng lượng/vận chuyển hàng hóa cũng có thể bật hoặc tắt.
 
-玩家可以使用指令 `/slimehud toggle` 来切换 WAILA 的开关。
+Người chơi có thể sử dụng lệnh `/slimehud toggle` để bật/tắt WAILA.
 
-## 下载
+## Tải xuống
 
 <p align="center">
   <a href="https://builds.guizhanss.net/SlimefunGuguProject/SlimeHUD/master">
@@ -16,38 +16,42 @@
   </a>
 </p>
 
-## 编译
+## Biên dịch
 ```
 mvn clean package
 ```
 
-## 预览
+## Xem trước
 
-### BossBar 版本
+### Phiên bản BossBar
 
 <https://user-images.githubusercontent.com/101147426/180625208-4713a843-e856-475e-ba83-95b5a61786f8.mp4>
 
-### ActionBar 版本
+### Phiên bản ActionBar
 
 https://user-images.githubusercontent.com/101147426/180625211-cbcfd01d-d418-4e6c-a8ab-55d938d7840e.mp4
 
 ## PlaceholderAPI
 
-- `%slimehud_toggle%` 返回玩家是否已启用 SlimeHUD。`true` 或 `false`。
-- `%slimehud_hud%` 返回完整的的 HUD 显示文本，包含方块名称与额外信息
-- `%slimehud_hud_block%` 仅包含方块名称
-- `%slimehud_hud_block_info%` 仅包含额外信息
+- `%slimehud_toggle%` trả về trạng thái người chơi đã bật SlimeHUD hay chưa. `true` hoặc `false`.
+- `%slimehud_hud%` trả về toàn bộ nội dung hiển thị của HUD, bao gồm tên khối và thông tin bổ sung
+- `%slimehud_hud_block%` chỉ chứa tên khối
+- `%slimehud_hud_block_info%` chỉ chứa thông tin bổ sung
 
-## 限制
+## Giới hạn
 
-- Minecraft 仅有7种颜色的 BossBar，而聊天文字颜色却有16种。
+- Minecraft chỉ có 7 màu cho BossBar, trong khi màu chữ trong chat có tới 16 màu.
 
-## 需要
+## Yêu cầu
 
-- Spigot 或衍生服务端
+- Spigot hoặc bản dẫn xuất
 - Slimefun
 
 ## Credits
 
 *InfinityLib* by Mooy1
 *Lombok* by Project Lombok
+## Này bản fork từ upstream của nhóm dev người TQ xong dịch :D
+Credit: 
+---
+[Craft233MC](https://github.com/Craft233MC/SlimeHUD)

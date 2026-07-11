@@ -17,7 +17,7 @@ public class TranslationManager {
             if (Bukkit.getPluginManager().getPlugin("SlimefunTranslation") != null) {
                 translationEnabled = true;
             } else {
-                SlimeHUD.getInstance().getLogger().info("SlimefunTranslation 未安装，相关功能将不会启用。");
+                SlimeHUD.getInstance().getLogger().info("SlimefunTranslation chưa được cài đặt, các tính năng liên quan sẽ không được bật.");
                 translationEnabled = false;
             }
         }
@@ -33,7 +33,7 @@ public class TranslationManager {
         try {
             return SlimefunTranslationAPI.getItemName(SlimefunTranslationAPI.getUser(p), sfItem);
         } catch (NoClassDefFoundError e) {
-            SlimeHUD.getInstance().getLogger().info("无法获取物品翻译，请更新 SlimefunTranslation!");
+            SlimeHUD.getInstance().getLogger().info("Không thể lấy bản dịch vật phẩm, vui lòng cập nhật SlimefunTranslation!");
             translationEnabled = false;
             return sfItem.getItemName();
         }

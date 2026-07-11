@@ -22,7 +22,7 @@ public class HudBuilder {
      */
     @Nonnull
     public static String formatEnergyStored(int energy) {
-        return HudBuilder.getAbbreviatedNumber(energy) + " J 已存储";
+        return HudBuilder.getAbbreviatedNumber(energy) + " J đã lưu trữ";
     }
 
     /**
