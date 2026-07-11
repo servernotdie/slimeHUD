@@ -66,7 +66,7 @@ public class HudController {
 
         Network en = EnergyNet.getNetworkFromLocation(request.getLocation());
         int size = getNetworkSize(en);
-        return size < 0 ? "" : "能源网络大小: " + HudBuilder.getCommaNumber(size);
+        return size < 0 ? "" : "Kích thước mạng năng lượng: " + HudBuilder.getCommaNumber(size);
     }
 
     @Nonnull
@@ -100,7 +100,7 @@ public class HudController {
         MachineOperation operation = machine.getMachineProcessor().getOperation(request.getLocation());
 
         if (operation == null) {
-            hudText.append("空闲");
+            hudText.append("Nhàn rỗi");
             if (request.getSlimefunItem() instanceof EnergyNetComponent) {
                 hudText.append(" ").append(processCapacitor(request));
             }
@@ -132,7 +132,7 @@ public class HudController {
         if (generation > 0) {
             hudText.append(HudBuilder.formatEnergyGenerated(generation));
         } else {
-            hudText.append("不在发电");
+            hudText.append("Không phát điện");
         }
 
         if (gen instanceof EnergyNetComponent) {
@@ -156,7 +156,7 @@ public class HudController {
         if (generation > 0) {
             hudText.append(HudBuilder.formatEnergyGenerated(generation));
         } else {
-            hudText.append("不在发电");
+            hudText.append("Không phát điện");
         }
 
         if (gen instanceof EnergyNetComponent) {
@@ -173,7 +173,7 @@ public class HudController {
         }
         CargoNode cn = (CargoNode) request.getSlimefunItem();
         int channel = cn.getSelectedChannel(request.getLocation().getBlock()) + 1;
-        return "信道: " + Util.getColorFromCargoChannel(channel).toString() + channel;
+        return "Kênh: " + Util.getColorFromCargoChannel(channel).toString() + channel;
     }
 
     @Nonnull
@@ -184,7 +184,7 @@ public class HudController {
         Network cn = CargoNet.getNetworkFromLocation(request.getLocation());
 
         int size = getNetworkSize(cn);
-        return size < 0 ? "" : "货运网络大小: " + HudBuilder.getCommaNumber(size);
+        return size < 0 ? "" : "Kích thước mạng vận chuyển: " + HudBuilder.getCommaNumber(size);
     }
 
     private int getNetworkSize(Network network) {

@@ -84,7 +84,7 @@ public class Util {
                 return BarColor.WHITE;
         
             default:
-                SlimeHUD.log(Level.WARNING, "[SlimeHUD] 无效的 BossBar 颜色: " + color, "[SlimeHUD] 将使用默认的白色...");
+                SlimeHUD.log(Level.WARNING, "[SlimeHUD] Màu BossBar không hợp lệ: " + color, "[SlimeHUD] Sẽ sử dụng màu trắng mặc định...");
                 return BarColor.WHITE;
         }
     }

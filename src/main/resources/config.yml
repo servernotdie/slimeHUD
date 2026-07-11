@@ -1,50 +1,50 @@
 options:
-  # 自动更新 （你应该开启）
+  # Tự động cập nhật （bạn nên bật cái này）
   auto-update: true
 
-  # 是否启用 PlaceholderAPI 的支持（可获取玩家的HUD启用状态）
+  # Có bật hỗ trợ PlaceholderAPI hay không (có thể lấy trạng thái bật HUD của người chơi)
   placeholder-api-support: true
 
-  # 是否启用 Use SlimefunTranslation 来显示翻译后的物品名称
+  # Có bật sử dụng SlimefunTranslation để hiển thị tên vật phẩm đã dịch hay không
   slimefun-translation-support: true
 
 waila:
 
-  # 设置为 true 时，禁用一切功能。
-  # 最高优先级，无视 'disabled-in' 设置与玩家偏好。
+  # Khi đặt true, sẽ tắt toàn bộ tính năng.
+  # Ưu tiên cao nhất, bỏ qua thiết lập 'disabled-in' và tùy chọn của người chơi.
   disabled: false
 
-  # 设置需要禁用 WAILA 的世界。
+  # Thiết lập những thế giới cần tắt WAILA.
   disabled-in: []
 
-  # 显示位置，可以为 'bossbar' 或 'hotbar'。
+  # Vị trí hiển thị, có thể là 'bossbar' hoặc 'hotbar'.
   location: bossbar
 
-  # 是否使用与方块的原始名称颜色。关闭后，使用白色。
+  # Có sử dụng màu tên gốc của khối hay không. Khi tắt, sẽ dùng màu trắng.
   use-original-colors: true
 
-  # Boss血条颜色，必须为小驼峰 'snake_case'.
-  # 'inherit' 为匹配最相近的颜色 'match the color of the bossbar to that of the text'.
-  # 'default' 为白色
+  # Màu thanh máu Boss, phải viết theo kiểu 'snake_case'.
+  # 'inherit' nghĩa là khớp với màu gần nhất 'match the color of the bossbar to that of the text'.
+  # 'default' là màu trắng
   bossbar-color: inherit
 
-  # 货运管理器/连接器是否显示货运网络大小
+  # Bộ quản lý/kết nối hàng hóa có hiển thị kích thước mạng vận chuyển hay không
   show-cargo-size: true
 
-  # 货运输入/输出节点是否显示信道
+  # Nút nhập/xuất hàng hóa có hiển thị kênh hay không
   show-cargo-channel: true
 
-  # 能源管理器/连接器是否显示能源网络大小
+  # Bộ quản lý/kết nối năng lượng có hiển thị kích thước mạng năng lượng hay không
   show-energy-size: true
 
-  # 电容是否显示已存储电量
+  # Tụ điện có hiển thị lượng điện đã lưu trữ hay không
   show-energy-stored: true
 
-  # 是否显示机器进度（支持大部分机器）
+  # Có hiển thị tiến độ máy hay không (hỗ trợ hầu hết các máy)
   show-machine-progress: true
 
-  # 是否显示发电机效率（支持大部分发电机）
+  # Có hiển thị hiệu suất máy phát điện hay không (hỗ trợ hầu hết máy phát điện)
   show-generator-generation: true
 
-  # WAILA 更新间隔，单位为MC游戏刻
+  # Khoảng thời gian cập nhật WAILA, tính bằng tick MC
   tick-rate: 10
