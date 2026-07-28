@@ -1,0 +1,564 @@
+From 5ff160cbb34a09994c122bcfede6fcfb9743a501 Mon Sep 17 00:00:00 2001
+From: mytai20100 <142713298+Mytai20100@users.noreply.github.com>
+Date: Sat, 11 Jul 2026 13:18:47 +0700
+Subject: [PATCH 1/2] feat(vi) traslated all to VietNamese
+
+---
+ .github/ISSUE_TEMPLATE/bug-report.yml         | 85 ++++++++++---------
+ .github/ISSUE_TEMPLATE/config.yml             |  4 +-
+ .github/workflows/maven.yml                   | 30 +++++++
+ README.md                                     | 40 +++++----
+ .../command/SlimeHUDCommandExecutor.java      |  8 +-
+ .../placeholder/PlaceholderManager.java       |  2 +-
+ .../translation/TranslationManager.java       |  4 +-
+ .../slimehud/util/HudBuilder.java             |  2 +-
+ .../schntgaispock/slimehud/util/Util.java     |  2 +-
+ .../slimehud/waila/HudController.java         | 12 +--
+ src/main/resources/config.yml                 | 36 ++++----
+ 11 files changed, 130 insertions(+), 95 deletions(-)
+
+diff --git a/.github/ISSUE_TEMPLATE/bug-report.yml b/.github/ISSUE_TEMPLATE/bug-report.yml
+index 3150265..9973e92 100644
+--- a/.github/ISSUE_TEMPLATE/bug-report.yml
++++ b/.github/ISSUE_TEMPLATE/bug-report.yml
+@@ -1,5 +1,5 @@
+-name: Bug汇报
+-description: 反馈本插件的Bug或问题
++name: Bug Report
++description: Báo cáo Bug hoặc sự cố của plugin này
+ labels: ["bug"]
+ assignees:
+   - ybw0014
+@@ -7,46 +7,46 @@ body:
+   - type: markdown
+     attributes:
+       value: |
+-        ## 欢迎来到 SlimefunGuguProject 的问题追踪器
+-        你正在反馈 SlimeHUD 汉化版出现的 Bug。
+-        任何意见，建议请前往[QQ群](https://ybw0014.net/go/sf-qgroup)进行反馈。
+-        建议先阅读[这篇文章](https://slimefun-wiki.guizhanss.cn/How-to-report-bugs)了解如何正确地汇报Bug。
++        ## Chào mừng bạn đến với hệ thống theo dõi vấn đề của SlimefunGuguProject
++        Bạn đang báo cáo Bug xuất hiện ở phiên bản Việt hóa/Hán hóa của SlimeHUD.
++        Mọi ý kiến, góp ý xin vui lòng gửi đến [Nhóm QQ](https://ybw0014.net/go/sf-qgroup) để phản hồi.
++        Khuyến nghị đọc [bài viết này](https://slimefun-wiki.guizhanss.cn/How-to-report-bugs) trước để hiểu cách báo cáo Bug đúng cách.
+ 
+-        <strong><i>你必须填写标注为星号（*）的表单项</i></strong>
++        <strong><i>Bạn phải điền vào các mục biểu mẫu được đánh dấu sao (*)</i></strong>
+ 
+   - type: checkboxes
+     id: checklist
+     attributes:
+-      label: 检查项目
+-      description: 在汇报之前，你需要确认
++      label: Các mục cần kiểm tra
++      description: Trước khi báo cáo, bạn cần xác nhận
+       options:
+-        - label: 你使用的是从构建站下载的版本
++        - label: Bạn đang sử dụng phiên bản được tải xuống từ trang build
+           required: true
+-        - label: 你已经检验过下载的文件的校验和，确认已完整下载文件
++        - label: Bạn đã kiểm tra checksum của file đã tải xuống, xác nhận file đã được tải xuống đầy đủ
+           required: false
+-        - label: 你没有对下载的文件内容进行任何更改
++        - label: Bạn chưa thực hiện bất kỳ thay đổi nào đối với nội dung file đã tải xuống
+           required: true
+-        - label: 你已经寻找过[已知问题列表](https://github.com/SlimefunGuguProject/SlimeHUD/issues)，且没有找到相同的问题
++        - label: Bạn đã tìm kiếm trong [danh sách các vấn đề đã biết](https://github.com/SlimefunGuguProject/SlimeHUD/issues) và không tìm thấy vấn đề tương tự
+           required: true
+ 
+   - type: textarea
+     id: description
+     attributes:
+-      label: 问题描述
++      label: Mô tả vấn đề
+       description: |
+-        详细描述你要汇报的问题
+-        提供详细的信息能让我们更快地处理问题
+-      placeholder: 只说"不能用"没法让开发者定位问题。
++        Mô tả chi tiết vấn đề mà bạn muốn báo cáo
++        Cung cấp thông tin chi tiết sẽ giúp chúng tôi xử lý vấn đề nhanh hơn
++      placeholder: Chỉ nói "không dùng được" thì nhà phát triển không thể xác định được vấn đề.
+     validations:
+       required: true
+ 
+   - type: textarea
+     id: reproduction
+     attributes:
+-      label: 复现步骤
++      label: Các bước tái hiện
+       description: |
+-        请详细描述如何才能复现该问题
+-        如果有视频，请在此提供视频链接
++        Vui lòng mô tả chi tiết cách để tái hiện lại vấn đề này
++        Nếu có video, vui lòng cung cấp liên kết video tại đây
+       placeholder: |
+         1. xxx
+         2. xxx
+@@ -56,20 +56,20 @@ body:
+   - type: textarea
+     id: expected-behavior
+     attributes:
+-      label: 预期行为
++      label: Hành vi mong đợi
+       description: |
+-        你觉得应该发生什么
+-        有时候，问题的原因是你误解了某个功能。
++        Bạn nghĩ điều gì lẽ ra nên xảy ra
++        Đôi khi, nguyên nhân của vấn đề là do bạn hiểu sai về một tính năng nào đó.
+     validations:
+       required: true
+ 
+   - type: input
+     id: server-log
+     attributes:
+-      label: 服务器日志
++      label: Nhật ký máy chủ
+       description: |
+-        请查看服务器日志中是否包含任何报错，如果有请上传至 [https://paste.guizhanss.net/](https://paste.guizhanss.net/) 并在此填入链接。
+-        **不要直接在这里粘贴日志**
++        Vui lòng kiểm tra xem nhật ký máy chủ có chứa bất kỳ lỗi nào không, nếu có vui lòng tải lên [https://paste.guizhanss.net/](https://paste.guizhanss.net/) và điền liên kết vào đây.
++        **Không dán trực tiếp nhật ký vào đây**
+       placeholder: https://paste.guizhanss.net/...
+     validations:
+       required: false
+@@ -77,11 +77,11 @@ body:
+   - type: input
+     id: error-report
+     attributes:
+-      label: 错误报告
++      label: Báo cáo lỗi
+       description: |
+-        如果服务器日志中提到了`/plugins/Slimefun/error-reports`中的文件（即错误报告）
+-        请上传至 [https://paste.guizhanss.net/](https://paste.guizhanss.net/) 并在此填入链接。
+-        **不要直接在这里粘贴错误报告**
++        Nếu nhật ký máy chủ có đề cập đến file trong `/plugins/Slimefun/error-reports` (tức báo cáo lỗi)
++        vui lòng tải lên [https://paste.guizhanss.net/](https://paste.guizhanss.net/) và điền liên kết vào đây.
++        **Không dán trực tiếp báo cáo lỗi vào đây**
+       placeholder: https://paste.guizhanss.net/...
+     validations:
+       required: false
+@@ -89,42 +89,43 @@ body:
+   - type: dropdown
+     id: server-software
+     attributes:
+-      label: 服务端软件
+-      description: 请选择你服务端所使用的软件
++      label: Phần mềm máy chủ
++      description: Vui lòng chọn phần mềm máy chủ mà bạn đang sử dụng
+       options:
+         - Spigot
+         - Paper
+         - Purpur
+         - Airplane
+-        - 其他 (请在问题描述里写明)
++        - Khác (vui lòng ghi rõ trong mô tả vấn đề)
+     validations:
+       required: true
+ 
+   - type: input
+     id: minecraft-version
+     attributes:
+-      label: Minecraft 版本
+-      description: 请填写你的 Minecraft 版本
++      label: Phiên bản Minecraft
++      description: Vui lòng điền phiên bản Minecraft của bạn
+     validations:
+       required: true
+ 
+   - type: textarea
+     id: slimefun-version
+     attributes:
+-      label: Slimefun版本
++      label: Phiên bản Slimefun
+       description: |
+-        请填写Slimefun版本
+-        (例如 v4.9-canary-08120db)
+-        如果你有管理员权限，建议运行`/sf versions`指令，截图并在此上传指令输出的**所有内容**。
++        Vui lòng điền phiên bản Slimefun
++        (ví dụ v4.9-canary-08120db)
++        Nếu bạn có quyền quản trị viên, khuyến nghị chạy lệnh `/sf versions`, chụp màn hình và tải lên **toàn bộ nội dung** đầu ra của lệnh tại đây.
+     validations:
+       required: true
+ 
+   - type: input
+     id: version-plugin
+     attributes:
+-      label: 插件版本
++      label: Phiên bản plugin
+       description: |
+-        请填写插件版本
+-        (例如 Build 1 (git x114514))
++        Vui lòng điền phiên bản plugin
++        (ví dụ Build 1 (git x114514))
+     validations:
+       required: true
++      
+\ No newline at end of file
+diff --git a/.github/ISSUE_TEMPLATE/config.yml b/.github/ISSUE_TEMPLATE/config.yml
+index c3e881d..c7c2d08 100644
+--- a/.github/ISSUE_TEMPLATE/config.yml
++++ b/.github/ISSUE_TEMPLATE/config.yml
+@@ -1,5 +1,5 @@
+ blank_issues_enabled: false
+ contact_links:
+-  - name: 没有 Github 账号? 不会使用 Github?
++  - name: Không có tài khoản Github? Không biết cách sử dụng Github?
+     url: https://ybw0014.net/go/sf-qgroup
+-    about: 点击右侧按钮加入QQ群进行反馈
++    about: Nhấn vào nút bên phải để tham gia nhóm QQ và phản hồi
+\ No newline at end of file
+diff --git a/.github/workflows/maven.yml b/.github/workflows/maven.yml
+index d8d9b27..afed9ff 100644
+--- a/.github/workflows/maven.yml
++++ b/.github/workflows/maven.yml
+@@ -14,6 +14,8 @@ jobs:
+   build:
+     if: startsWith(github.event.head_commit.message, '[CI skip]') == false
+     runs-on: ubuntu-latest
++    permissions:
++      contents: write
+     steps:
+       - uses: actions/checkout@v3.5.3
+       
+@@ -45,3 +47,31 @@ jobs:
+         with:
+           name: ${{ env.FILE }}
+           path: target/${{ env.FILE }}
++
++      - name: Generate tag
++        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/master'
++        id: tag
++        run: |
++          TAG="build-${{ github.run_number }}"
++          echo "TAG=$TAG" >> $GITHUB_ENV
++          echo "tag=$TAG" >> $GITHUB_OUTPUT
++
++      - name: Create tag
++        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/master'
++        run: |
++          git config user.name "github-actions[bot]"
++          git config user.email "github-actions[bot]@users.noreply.github.com"
++          git tag ${{ env.TAG }}
++          git push origin ${{ env.TAG }}
++
++      - name: Create Release
++        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/master'
++        uses: softprops/action-gh-release@v2
++        with:
++          tag_name: ${{ env.TAG }}
++          name: ${{ env.TAG }}
++          files: target/${{ env.FILE }}
++          generate_release_notes: true
++        env:
++          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
++          
+\ No newline at end of file
+diff --git a/README.md b/README.md
+index 020abc0..0270f51 100644
+--- a/README.md
++++ b/README.md
+@@ -1,14 +1,14 @@
+ # SlimeHUD
+ 
+-添加了 Slimefun 方块的 WAILA (我在看什么) 显示功能。  
+-你可以直接获得你看向的方块的名称，不需要打开菜单，或是破坏方块。  
++Đã thêm tính năng hiển thị WAILA (What Am I Looking At) cho các khối Slimefun.  
++Bạn có thể trực tiếp nhìn thấy tên của khối mà bạn đang nhìn vào, không cần mở menu hay phá khối.  
+ 
+-可以在`config.yml`中设置使用BossBar或ActionBar显示。  
+-额外的能源/货运网络信息也可以设置开启或关闭。
++Có thể thiết lập trong `config.yml` để hiển thị bằng BossBar hoặc ActionBar.  
++Thông tin bổ sung về mạng năng lượng/vận chuyển hàng hóa cũng có thể bật hoặc tắt.
+ 
+-玩家可以使用指令 `/slimehud toggle` 来切换 WAILA 的开关。
++Người chơi có thể sử dụng lệnh `/slimehud toggle` để bật/tắt WAILA.
+ 
+-## 下载
++## Tải xuống
+ 
+ <p align="center">
+   <a href="https://builds.guizhanss.net/SlimefunGuguProject/SlimeHUD/master">
+@@ -16,38 +16,42 @@
+   </a>
+ </p>
+ 
+-## 编译
++## Biên dịch
+ ```
+ mvn clean package
+ ```
+ 
+-## 预览
++## Xem trước
+ 
+-### BossBar 版本
++### Phiên bản BossBar
+ 
+ <https://user-images.githubusercontent.com/101147426/180625208-4713a843-e856-475e-ba83-95b5a61786f8.mp4>
+ 
+-### ActionBar 版本
++### Phiên bản ActionBar
+ 
+ https://user-images.githubusercontent.com/101147426/180625211-cbcfd01d-d418-4e6c-a8ab-55d938d7840e.mp4
+ 
+ ## PlaceholderAPI
+ 
+-- `%slimehud_toggle%` 返回玩家是否已启用 SlimeHUD。`true` 或 `false`。
+-- `%slimehud_hud%` 返回完整的的 HUD 显示文本，包含方块名称与额外信息
+-- `%slimehud_hud_block%` 仅包含方块名称
+-- `%slimehud_hud_block_info%` 仅包含额外信息
++- `%slimehud_toggle%` trả về trạng thái người chơi đã bật SlimeHUD hay chưa. `true` hoặc `false`.
++- `%slimehud_hud%` trả về toàn bộ nội dung hiển thị của HUD, bao gồm tên khối và thông tin bổ sung
++- `%slimehud_hud_block%` chỉ chứa tên khối
++- `%slimehud_hud_block_info%` chỉ chứa thông tin bổ sung
+ 
+-## 限制
++## Giới hạn
+ 
+-- Minecraft 仅有7种颜色的 BossBar，而聊天文字颜色却有16种。
++- Minecraft chỉ có 7 màu cho BossBar, trong khi màu chữ trong chat có tới 16 màu.
+ 
+-## 需要
++## Yêu cầu
+ 
+-- Spigot 或衍生服务端
++- Spigot hoặc bản dẫn xuất
+ - Slimefun
+ 
+ ## Credits
+ 
+ *InfinityLib* by Mooy1
+ *Lombok* by Project Lombok
++## Này bản fork từ upstream của nhóm dev người TQ xong dịch :D
++Credit: 
++---
++[Craft233MC](https://github.com/Craft233MC/SlimeHUD)
+\ No newline at end of file
+diff --git a/src/main/java/io/github/schntgaispock/slimehud/command/SlimeHUDCommandExecutor.java b/src/main/java/io/github/schntgaispock/slimehud/command/SlimeHUDCommandExecutor.java
+index 84f00a5..4a4107a 100644
+--- a/src/main/java/io/github/schntgaispock/slimehud/command/SlimeHUDCommandExecutor.java
++++ b/src/main/java/io/github/schntgaispock/slimehud/command/SlimeHUDCommandExecutor.java
+@@ -35,15 +35,15 @@ public class SlimeHUDCommandExecutor implements CommandExecutor {
+             switch (args[0]) {
+                 case "toggle":
+                     if (!player.hasPermission("slimehud.togglewaila")) {
+-                        player.sendMessage("§a§lSlimeHUD§7> §c你没有权限切换 WAILA HUD！");
++                        player.sendMessage("§a§lSlimeHUD§7> §cBạn không có quyền chuyển đổi WAILA HUD!");
+                         return true;
+                     }
+                     if (SlimeHUD.getInstance().getConfig().getBoolean("waila.disabled", false)) {
+-                        player.sendMessage("§a§lSlimeHUD§7> §cWAILA HUD 被禁用了！");
++                        player.sendMessage("§a§lSlimeHUD§7> §cWAILA HUD đã bị vô hiệu hóa!");
+                         return true;
+                     }
+                     if (SlimeHUD.getInstance().getConfig().getList("waila.disabled-in", Collections.EMPTY_LIST).contains(player.getWorld().getName())) {
+-                        player.sendMessage("§a§lSlimeHUD§7> §cWAILA HUD 在当前世界被禁用了！");
++                        player.sendMessage("§a§lSlimeHUD§7> §cWAILA HUD đã bị vô hiệu hóa ở thế giới hiện tại!");
+                         return true;
+                     }
+                     boolean wailaOn = SlimeHUD.getInstance().getPlayerData().getBoolean(uuid + ".waila", true);
+@@ -53,7 +53,7 @@ public class SlimeHUDCommandExecutor implements CommandExecutor {
+                     wailas.get(uuid).setPaused(wailaOn);
+ 
+                     SlimeHUD.getInstance().getPlayerData().save();
+-                    player.sendMessage("§a§lSlimeHUD§7> HUD 已切换为 " + (wailaOn ? "§c关闭" : "§a开启"));
++                    player.sendMessage("§a§lSlimeHUD§7> HUD đã được chuyển sang " + (wailaOn ? "§cTắt" : "§aBật"));
+                     return true;
+             
+                 default:
+diff --git a/src/main/java/io/github/schntgaispock/slimehud/placeholder/PlaceholderManager.java b/src/main/java/io/github/schntgaispock/slimehud/placeholder/PlaceholderManager.java
+index 240858d..15bd7d0 100644
+--- a/src/main/java/io/github/schntgaispock/slimehud/placeholder/PlaceholderManager.java
++++ b/src/main/java/io/github/schntgaispock/slimehud/placeholder/PlaceholderManager.java
+@@ -9,7 +9,7 @@ public class PlaceholderManager {
+             if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
+                 new PlaceholderHook().register();
+             } else {
+-                SlimeHUD.getInstance().getLogger().info("PlaceholderAPI 未安装，相关功能将不会启用。");
++                SlimeHUD.getInstance().getLogger().info("PlaceholderAPI chưa được cài đặt, các tính năng liên quan sẽ không được bật.");
+             }
+         }
+     }
+diff --git a/src/main/java/io/github/schntgaispock/slimehud/translation/TranslationManager.java b/src/main/java/io/github/schntgaispock/slimehud/translation/TranslationManager.java
+index ac376a5..9603b8e 100644
+--- a/src/main/java/io/github/schntgaispock/slimehud/translation/TranslationManager.java
++++ b/src/main/java/io/github/schntgaispock/slimehud/translation/TranslationManager.java
+@@ -17,7 +17,7 @@ public class TranslationManager {
+             if (Bukkit.getPluginManager().getPlugin("SlimefunTranslation") != null) {
+                 translationEnabled = true;
+             } else {
+-                SlimeHUD.getInstance().getLogger().info("SlimefunTranslation 未安装，相关功能将不会启用。");
++                SlimeHUD.getInstance().getLogger().info("SlimefunTranslation chưa được cài đặt, các tính năng liên quan sẽ không được bật.");
+                 translationEnabled = false;
+             }
+         }
+@@ -33,7 +33,7 @@ public class TranslationManager {
+         try {
+             return SlimefunTranslationAPI.getItemName(SlimefunTranslationAPI.getUser(p), sfItem);
+         } catch (NoClassDefFoundError e) {
+-            SlimeHUD.getInstance().getLogger().info("无法获取物品翻译，请更新 SlimefunTranslation!");
++            SlimeHUD.getInstance().getLogger().info("Không thể lấy bản dịch vật phẩm, vui lòng cập nhật SlimefunTranslation!");
+             translationEnabled = false;
+             return sfItem.getItemName();
+         }
+diff --git a/src/main/java/io/github/schntgaispock/slimehud/util/HudBuilder.java b/src/main/java/io/github/schntgaispock/slimehud/util/HudBuilder.java
+index daf26c6..a15082f 100644
+--- a/src/main/java/io/github/schntgaispock/slimehud/util/HudBuilder.java
++++ b/src/main/java/io/github/schntgaispock/slimehud/util/HudBuilder.java
+@@ -22,7 +22,7 @@ public class HudBuilder {
+      */
+     @Nonnull
+     public static String formatEnergyStored(int energy) {
+-        return HudBuilder.getAbbreviatedNumber(energy) + " J 已存储";
++        return HudBuilder.getAbbreviatedNumber(energy) + " J đã lưu trữ";
+     }
+ 
+     /**
+diff --git a/src/main/java/io/github/schntgaispock/slimehud/util/Util.java b/src/main/java/io/github/schntgaispock/slimehud/util/Util.java
+index 0a8fe77..6193dee 100644
+--- a/src/main/java/io/github/schntgaispock/slimehud/util/Util.java
++++ b/src/main/java/io/github/schntgaispock/slimehud/util/Util.java
+@@ -84,7 +84,7 @@ public class Util {
+                 return BarColor.WHITE;
+         
+             default:
+-                SlimeHUD.log(Level.WARNING, "[SlimeHUD] 无效的 BossBar 颜色: " + color, "[SlimeHUD] 将使用默认的白色...");
++                SlimeHUD.log(Level.WARNING, "[SlimeHUD] Màu BossBar không hợp lệ: " + color, "[SlimeHUD] Sẽ sử dụng màu trắng mặc định...");
+                 return BarColor.WHITE;
+         }
+     }
+diff --git a/src/main/java/io/github/schntgaispock/slimehud/waila/HudController.java b/src/main/java/io/github/schntgaispock/slimehud/waila/HudController.java
+index 3547794..694361d 100644
+--- a/src/main/java/io/github/schntgaispock/slimehud/waila/HudController.java
++++ b/src/main/java/io/github/schntgaispock/slimehud/waila/HudController.java
+@@ -66,7 +66,7 @@ public class HudController {
+ 
+         Network en = EnergyNet.getNetworkFromLocation(request.getLocation());
+         int size = getNetworkSize(en);
+-        return size < 0 ? "" : "能源网络大小: " + HudBuilder.getCommaNumber(size);
++        return size < 0 ? "" : "Kích thước mạng năng lượng: " + HudBuilder.getCommaNumber(size);
+     }
+ 
+     @Nonnull
+@@ -100,7 +100,7 @@ public class HudController {
+         MachineOperation operation = machine.getMachineProcessor().getOperation(request.getLocation());
+ 
+         if (operation == null) {
+-            hudText.append("空闲");
++            hudText.append("Nhàn rỗi");
+             if (request.getSlimefunItem() instanceof EnergyNetComponent) {
+                 hudText.append(" ").append(processCapacitor(request));
+             }
+@@ -132,7 +132,7 @@ public class HudController {
+         if (generation > 0) {
+             hudText.append(HudBuilder.formatEnergyGenerated(generation));
+         } else {
+-            hudText.append("不在发电");
++            hudText.append("Không phát điện");
+         }
+ 
+         if (gen instanceof EnergyNetComponent) {
+@@ -156,7 +156,7 @@ public class HudController {
+         if (generation > 0) {
+             hudText.append(HudBuilder.formatEnergyGenerated(generation));
+         } else {
+-            hudText.append("不在发电");
++            hudText.append("Không phát điện");
+         }
+ 
+         if (gen instanceof EnergyNetComponent) {
+@@ -173,7 +173,7 @@ public class HudController {
+         }
+         CargoNode cn = (CargoNode) request.getSlimefunItem();
+         int channel = cn.getSelectedChannel(request.getLocation().getBlock()) + 1;
+-        return "信道: " + Util.getColorFromCargoChannel(channel).toString() + channel;
++        return "Kênh: " + Util.getColorFromCargoChannel(channel).toString() + channel;
+     }
+ 
+     @Nonnull
+@@ -184,7 +184,7 @@ public class HudController {
+         Network cn = CargoNet.getNetworkFromLocation(request.getLocation());
+ 
+         int size = getNetworkSize(cn);
+-        return size < 0 ? "" : "货运网络大小: " + HudBuilder.getCommaNumber(size);
++        return size < 0 ? "" : "Kích thước mạng vận chuyển: " + HudBuilder.getCommaNumber(size);
+     }
+ 
+     private int getNetworkSize(Network network) {
+diff --git a/src/main/resources/config.yml b/src/main/resources/config.yml
+index e853453..4ce52d0 100644
+--- a/src/main/resources/config.yml
++++ b/src/main/resources/config.yml
+@@ -1,50 +1,50 @@
+ options:
+-  # 自动更新 （你应该开启）
++  # Tự động cập nhật （bạn nên bật cái này）
+   auto-update: true
+ 
+-  # 是否启用 PlaceholderAPI 的支持（可获取玩家的HUD启用状态）
++  # Có bật hỗ trợ PlaceholderAPI hay không (có thể lấy trạng thái bật HUD của người chơi)
+   placeholder-api-support: true
+ 
+-  # 是否启用 Use SlimefunTranslation 来显示翻译后的物品名称
++  # Có bật sử dụng SlimefunTranslation để hiển thị tên vật phẩm đã dịch hay không
+   slimefun-translation-support: true
+ 
+ waila:
+ 
+-  # 设置为 true 时，禁用一切功能。
+-  # 最高优先级，无视 'disabled-in' 设置与玩家偏好。
++  # Khi đặt true, sẽ tắt toàn bộ tính năng.
++  # Ưu tiên cao nhất, bỏ qua thiết lập 'disabled-in' và tùy chọn của người chơi.
+   disabled: false
+ 
+-  # 设置需要禁用 WAILA 的世界。
++  # Thiết lập những thế giới cần tắt WAILA.
+   disabled-in: []
+ 
+-  # 显示位置，可以为 'bossbar' 或 'hotbar'。
++  # Vị trí hiển thị, có thể là 'bossbar' hoặc 'hotbar'.
+   location: bossbar
+ 
+-  # 是否使用与方块的原始名称颜色。关闭后，使用白色。
++  # Có sử dụng màu tên gốc của khối hay không. Khi tắt, sẽ dùng màu trắng.
+   use-original-colors: true
+ 
+-  # Boss血条颜色，必须为小驼峰 'snake_case'.
+-  # 'inherit' 为匹配最相近的颜色 'match the color of the bossbar to that of the text'.
+-  # 'default' 为白色
++  # Màu thanh máu Boss, phải viết theo kiểu 'snake_case'.
++  # 'inherit' nghĩa là khớp với màu gần nhất 'match the color of the bossbar to that of the text'.
++  # 'default' là màu trắng
+   bossbar-color: inherit
+ 
+-  # 货运管理器/连接器是否显示货运网络大小
++  # Bộ quản lý/kết nối hàng hóa có hiển thị kích thước mạng vận chuyển hay không
+   show-cargo-size: true
+ 
+-  # 货运输入/输出节点是否显示信道
++  # Nút nhập/xuất hàng hóa có hiển thị kênh hay không
+   show-cargo-channel: true
+ 
+-  # 能源管理器/连接器是否显示能源网络大小
++  # Bộ quản lý/kết nối năng lượng có hiển thị kích thước mạng năng lượng hay không
+   show-energy-size: true
+ 
+-  # 电容是否显示已存储电量
++  # Tụ điện có hiển thị lượng điện đã lưu trữ hay không
+   show-energy-stored: true
+ 
+-  # 是否显示机器进度（支持大部分机器）
++  # Có hiển thị tiến độ máy hay không (hỗ trợ hầu hết các máy)
+   show-machine-progress: true
+ 
+-  # 是否显示发电机效率（支持大部分发电机）
++  # Có hiển thị hiệu suất máy phát điện hay không (hỗ trợ hầu hết máy phát điện)
+   show-generator-generation: true
+ 
+-  # WAILA 更新间隔，单位为MC游戏刻
++  # Khoảng thời gian cập nhật WAILA, tính bằng tick MC
+   tick-rate: 10
+\ No newline at end of file
+-- 
+2.47.3
+
