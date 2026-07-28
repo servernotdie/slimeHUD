@@ -207,52 +207,6 @@ index c3e881d..c7c2d08 100644
 -    about: 点击右侧按钮加入QQ群进行反馈
 +    about: Nhấn vào nút bên phải để tham gia nhóm QQ và phản hồi
 \ No newline at end of file
-diff --git a/.github/workflows/maven.yml b/.github/workflows/maven.yml
-index d8d9b27..afed9ff 100644
---- a/.github/workflows/maven.yml
-+++ b/.github/workflows/maven.yml
-@@ -14,6 +14,8 @@ jobs:
-   build:
-     if: startsWith(github.event.head_commit.message, '[CI skip]') == false
-     runs-on: ubuntu-latest
-+    permissions:
-+      contents: write
-     steps:
-       - uses: actions/checkout@v3.5.3
-       
-@@ -45,3 +47,31 @@ jobs:
-         with:
-           name: ${{ env.FILE }}
-           path: target/${{ env.FILE }}
-+
-+      - name: Generate tag
-+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/master'
-+        id: tag
-+        run: |
-+          TAG="build-${{ github.run_number }}"
-+          echo "TAG=$TAG" >> $GITHUB_ENV
-+          echo "tag=$TAG" >> $GITHUB_OUTPUT
-+
-+      - name: Create tag
-+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/master'
-+        run: |
-+          git config user.name "github-actions[bot]"
-+          git config user.email "github-actions[bot]@users.noreply.github.com"
-+          git tag ${{ env.TAG }}
-+          git push origin ${{ env.TAG }}
-+
-+      - name: Create Release
-+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/master'
-+        uses: softprops/action-gh-release@v2
-+        with:
-+          tag_name: ${{ env.TAG }}
-+          name: ${{ env.TAG }}
-+          files: target/${{ env.FILE }}
-+          generate_release_notes: true
-+        env:
-+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-+          
-\ No newline at end of file
 diff --git a/README.md b/README.md
 index 020abc0..0270f51 100644
 --- a/README.md
@@ -561,4 +515,3 @@ index e853453..4ce52d0 100644
 \ No newline at end of file
 -- 
 2.47.3
-
